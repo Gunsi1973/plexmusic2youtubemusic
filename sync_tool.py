@@ -126,13 +126,19 @@ def sync_playlists():
             total_synced = 0
             tracks = pl.items()
             
-            # Initialize progress bar
             pbar = tqdm(total=len(tracks), desc="Progress", unit="Song", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]")
             
             for track in tracks:
                 artist = track.originalTitle if track.originalTitle else track.grandparentTitle
                 song_title = track.title
                 duration_ms = track.duration
+                
+                # Format duration for the missing tracks file
+                duration_str = "Unknown"
+                if duration_ms:
+                    mins = duration_ms // 60000
+                    secs = (duration_ms % 60000) // 1000
+                    duration_str = f"{mins}:{secs:02d}"
                 
                 video_id = match_song(yt, artist, song_title, duration_ms, cache)
                 
@@ -145,7 +151,9 @@ def sync_playlists():
                         batch.append(video_id)
                         existing_video_ids.add(video_id)
                 else:
-                    missing_tracks.append(f"{artist} - {song_title} (Playlist: {pl.title})")
+                    missing_tracks.append(f"{artist} - {song_title} | {duration_str} (Playlist: {pl.title})")
+                    # Immediate save when a track is missing
+                    save_missing_tracks(missing_tracks)
                 
                 if len(batch) >= BATCH_SIZE:
                     yt.add_playlist_items(yt_playlist_id, batch)
@@ -153,12 +161,9 @@ def sync_playlists():
                     tqdm.write(f"-> Intermediate save: {total_synced} new tracks added to playlist.")
                     batch = []
                     save_cache(cache)
-                    save_missing_tracks(missing_tracks)
                 
-                # Update progress bar
                 pbar.update(1)
 
-            # Loop finished, close progress bar
             pbar.close()
 
             if batch:

@@ -1,0 +1,28 @@
+import ytmusicapi
+
+# WICHTIG: Dreifache Anführungszeichen für mehrzeilige Strings
+headers = """POST /api/stats/qoe?fmt=0&afmt=140&cpn=Fe67WJEYROo0zwkE&el=detailpage&ns=yt&fexp=v1%2C24004644%2C494889%2C26510702%2C53408%2C34656%2C106030%2C18644%2C117689%2C9252%2C3479%2C13030%2C23206%2C15179%2C54617%2C30906%2C9720%2C5385%2C20831%2C4228%2C4174%2C12719%2C16964%2C764%2C13516%2C5189%2C1734%2C19703%2C4571%2C5237%2C5801%2C1977%2C13110%2C2978%2C9404%2C8746%2C15080%2C9500%2C1840%2C12605%2C8105%2C1764%2C1645%2C10126%2C1365%2C516%2C1777%2C14%2C2684%2C5115%2C10930%2C2229%2C5792%2C13493%2C459%2C1448%2C328%2C7376%2C763%2C1282%2C4976%2C2656%2C3637%2C14341%2C1170%2C2135%2C1354%2C952%2C2754%2C3357%2C9273%2C144%2C3795%2C3173%2C3285%2C9190%2C165%2C375%2C808&cl=885186571&seq=7&docid=aqY9JFUwAeQ&ei=ko7CaZifLrKx-_UP4NjVsAs&event=streamingstats&feature=BFa&osid=AAAAAbOSgBc%3AAOeUNAbUEeJXd2d3k6dwPvql1rj_R6XhFw&plid=AAZNxPP_Wn5UWWZl&cbr=Firefox&cbrver=148.0&c=WEB_REMIX&cver=1.20260318.00.00&cplayer=UNIPLAYER&cos=Windows&cosver=10.0&cplatform=DESKTOP&bwe=247.622:1832061,247.623:1832061,250.191:1832061&vis=247.622:1&cmt=247.622:0.000,247.623:0.000,250.191:0.000&bh=247.622:0.000,247.623:0.000,250.191:0.000&qclc=ChBGZTY3V0pFWVJPbzB6d2tFEAc HTTP/3
+Host: music.youtube.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Gecko/20100101 Firefox/148.0
+Accept: */*
+Accept-Language: en-US,en;q=0.9
+Accept-Encoding: gzip, deflate, br, zstd
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 226
+Referer: https://music.youtube.com/search?q=sem+jacobs+i+don%27t+mind+extended
+X-Goog-Visitor-Id: CgtpdG5sekJmZklEbyi1lYrOBjIKCgJDSBIEGgAgSQ%3D%3D
+X-Goog-AuthUser: 1
+X-YouTube-DataSync-Id: 108877738970499359195||
+Origin: https://music.youtube.com
+Sec-GPC: 1
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Connection: keep-alive
+Alt-Used: music.youtube.com
+Cookie: __Secure-1PSIDTS=sidts-CjUBWhotCb8QAnBAt-kzsBeohDv6ZBzHb-dsTQstxES-TDBEoo7pHFrlXd9Qn2x764X4rESqShAA; __Secure-3PSIDTS=sidts-CjUBWhotCb8QAnBAt-kzsBeohDv6ZBzHb-dsTQstxES-TDBEoo7pHFrlXd9Qn2x764X4rESqShAA; HSID=AIv_04CC3UGxVJYF8; SSID=AqtJmIXLl4OZZKIiy; APISID=W2lPB-STJo9-5yUS/AaGeA1gN_QmStQ_AF; SAPISID=XT7zzgEiUlRfpknz/AgD918Y35zdxnsnLT; __Secure-1PAPISID=XT7zzgEiUlRfpknz/AgD918Y35zdxnsnLT; __Secure-3PAPISID=XT7zzgEiUlRfpknz/AgD918Y35zdxnsnLT; SID=g.a0007QjyMXzpJ_KBEZwZOO2lbzaAnnLw_73as7-Pb_xfkF0N6_N-kkpNaxMZ9dEehHZ5czZG0wACgYKAV4SARESFQHGX2MiDyWFkF2IrqULXk-jSxL5ABoVAUF8yKrBBYlurLEFm1RrbDbnbkjV0076; __Secure-1PSID=g.a0007QjyMXzpJ_KBEZwZOO2lbzaAnnLw_73as7-Pb_xfkF0N6_N-_Se-BFN32qyfkY71gBO47QACgYKASsSARESFQHGX2Mi5uw8uYzmNrxhnGav-tDPVBoVAUF8yKo88ECu1ZOC-7P_c0Ei_2mD0076; __Secure-3PSID=g.a0007QjyMXzpJ_KBEZwZOO2lbzaAnnLw_73as7-Pb_xfkF0N6_N-lgh9tvLcVAGehClSF-NrYwACgYKAakSARESFQHGX2MiDHttkS5m_iZ-gg6uSf5b5xoVAUF8yKo0hytDfAApEDNPojoyJxw50076; SIDCC=AKEyXzUDuw3UTPye5CRmsGjtTgZP9wLSj0dCwoc9F06ziAshTW7dr4zwq7Z3vPIBlr6I3WVwvA; __Secure-1PSIDCC=AKEyXzUL9-EKG_sKAK1wlgQT1BF5JgQCAzTka5EL1t6VijqjzrvgM0auwqeFDIZsA9ZL-0Rtomw; __Secure-3PSIDCC=AKEyXzW4D8ng_V3QKxQE7W5MP-3JGJfssMNtMkaSSYBwUv7W5TUp60YzFxm2XCXPOQt4xAopYQ; __Secure-ROLLOUT_TOKEN=COuFkZjmw5nDwAEQ_c6ltLGykQMYrZf_v6a4kwM%3D; LOGIN_INFO=AFmmF2swRgIhAP312wMjIrf1tVhqGcGSVh-7JsojhdAzkbi97HLMZ33kAiEA-5toAsbVof3_PEeUPTRw-jnMoH4S254c92rPvh0Ns0w:QUQ3MjNmeEk3OGpMbnVRQXY3Q3l0cmxYWXdnQ0dibFVBYkR2djU0VXRZbTlNRjJyN1hta0pBOF9wV3Z5RUNuSGNJVDdvSHZaWXU3LUlTMURZUlluZnNkVThXWUZUVUNoRG83Z0VHbnhGUmRvWGZJUFpJNjVHV05sRzFmMFZ3WkJsVENpZ2QzMkk4cXpEa0hGZzhfSG9GM3plSXBXakxsMDhB; __Secure-YEC=CgtpdG5sekJmZklEbyi1lYrOBjIKCgJDSBIEGgAgSQ%3D%3D; VISITOR_PRIVACY_METADATA=CgJDSBIEGgAgSQ%3D%3D; PREF=f6=40000080&f7=100&tz=Europe.Zurich&f5=30000&f4=4000000&repeat=NONE&autoplay=true; _gcl_au=1.1.88317478.1769518460; YSC=brGzTltav-U; CONSISTENCY=AG2Tqf-gsSHZYMw8vkeZIhMkZSHAcJQb_yHRDpen9sdF_03rVZ7kLwcHmuYqk_WjB16zXDAgQ6RjyipgYiq0XgjehMlCS5IDlWCxKtuIChQQ3HAe5WVxiN4vWnnOUeiwTsAGTNt-yq0nrbnGWbBu-xopMPUQH-iDR2Suzb_oBiGPSL1Y3hV9jxz6OFcLVmgE_G6SNTo9WikrjXp0BTAhxfw-U9mM6KuSZO322nkdXzRiLshWSR-EqUvx5v7yuRHkitfy22EC_ZPMDJ5k0yDICbuCf3o6f19q2yCa5q7vKA
+Priority: u=4"""
+
+# Setup aufrufen, dies parst den raw-String und erstellt die browser.json
+ytmusicapi.setup(filepath="browser.json", headers_raw=headers)
+print("Datei browser.json wurde erstellt!")

@@ -1,3 +1,8 @@
+# Project specific exclusions
+oauth.json
+headers_auth.json
+browser.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

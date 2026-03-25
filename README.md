@@ -1,3 +1,5 @@
+[![Vibe Coded](https://img.shields.io/badge/Vibe-Coded-blueviolet)](#)
+
 # Plex to YouTube Music Sync
 
 This project contains Python scripts to manage and synchronize your local Plex music library with YouTube Music.
@@ -119,3 +121,6 @@ python resolve_missing.py
 * **Resolving:** When you select a valid track, it is instantly added to your target YouTube Music playlist AND permanently removed from your `missing_tracks.txt` file.
 * **Skipping:** If you choose the "Skip and REMOVE" option, the track is ignored and also permanently removed from your missing list (treated as handled).
 * **Auto-Save:** The script updates the text file dynamically after every single choice. You can press `Ctrl+C` at any time to safely abort the script, and you will be able to resume your work later exactly where you left off.
+
+## Acknowledgements
+This project was entirely "vibe coded" with the help of an AI. The scripts were generated interactively to automate personal workflow tasks. Ideas and "need" for the tool by me :-D

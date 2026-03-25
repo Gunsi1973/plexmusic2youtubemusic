@@ -1,2 +1,6 @@
 plexapi
 ytmusicapi
+python-dotenv
+questionary
+colorama
+tqdm
